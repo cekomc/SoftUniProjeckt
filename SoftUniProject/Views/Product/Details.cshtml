@@ -1,0 +1,30 @@
+﻿@model SoftUniProject.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container">
+    <article>
+        <header>
+            <h2>
+                @Model.Name
+            </h2>
+        </header>
+        <p>
+            @Model.Price
+        </p>
+        <p>
+            @Model.Review
+        </p>
+        <footer class="pull-right">
+            @if(User.IsInRole("Admin"))
+            { 
+            @Html.ActionLink("Edit", "Edit", "Product", new { @id = Model.ID }, new { @class = "btn btn-success btn-xs" })
+            @Html.ActionLink("Delete", "Delete", "Product", new { @id = Model.ID }, new { @class = "btn btn-danger btn-xs" })
+            @Html.ActionLink("Back", "List", "Product", null, new { @class = "btn btn-default btn-xs" })
+            }
+        </footer>
+    </article>
+</div>
+<hr />

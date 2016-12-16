@@ -1,0 +1,34 @@
+﻿@model List<SoftUniProject.Models.Product>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-sm-6 col-md-3" style="margin-top:20px;">
+                <div class="thumbnail">
+                    <!--тумбнайла тр да е с параметри height:200px; width:253px;-->
+                    <img src="~/Images/watches1.jpg" alt="thumbnail01" style="height:200px; width:253px;"/>
+                    <div class="caption">
+                        <h3>@Html.DisplayFor(p => product.Name)</h3>
+                        <p style="text-align: center; border:solid 1px #f2f2f2">Added on: @Html.DisplayFor(modelItem => product.AddedOnDate)</p>
+                        <p><h3>@Html.DisplayFor(modelItem => product.Price)$</h3></p>
+                        <span style="margin-right:1px; margin-left:20px;">@Html.ActionLink("Details", "Details", new { id = product.ID }, new { @class = "btn btn-default" })</span>
+                        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                        <span><a href="#" class="btn btn-default" role="button">Add to Cart</a></span>
+                    </div>
+                    <p style="margin-left:30px;">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        @Html.ActionLink("Edit", "Product", new { id = product.ID }, new { @class = "btn btn-primary" })
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        @Html.ActionLink("Delete", "Product", new { id = product.ID }, new { @class = "btn btn-danger" })
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<hr />
